@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <div>
-      <div className="navbar bg-base-100 h-20">
+      <div className="navbar bg-white h-20">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -39,17 +39,6 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li>
-                <details>
-                  <summary>PAGES</summary>
-                  <ul className="p-2">
-                    <li>
-                      <a>Submenu 1</a>
-                    </li>
-                    <li>
-                      <a>Submenu 2</a>
-                    </li>
-                  </ul>
-                </details>
               </li>
               <li>
                 <NavLink className="heading font-bold" to="/">
@@ -59,14 +48,14 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to="/" className="btn btn-ghost text-xl">
-            <span className="text-primary lg:text-5xl plain tracking-wide font-extrabold">
+            <span className="text-primary lg:text-5xl plain tracking-wider font-extrabold">
               {" "}
               <span className="text-black">MO</span>BIKE
             </span>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal gap-8 px-1">
+          <ul className="menu flex items-center menu-horizontal gap-8 px-1">
             <li>
               <NavLink
                 className="heading text-xl text-gray-500 font-bold"
@@ -76,17 +65,13 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <details>
-                <summary className="heading text-xl text-gray-500 font-bold">
-                  PAGES
-                </summary>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
+              <details className="border-none  outline-none">
+                <summary className="m-1 btn border-white outline-white uppercase heading text-xl text-gray-500 font-bold">PAGES</summary>
+                <ul className="p-2 shadow menu dropdown-content z-[1] rounded-box w-52">
+                  <li><NavLink className="text-gray-700 font-semibold uppercase heading" to="/bikes">MOTORCYCLES</NavLink></li>
+                  <li><NavLink className="text-gray-700 font-semibold uppercase heading" to="/team">TEAM</NavLink></li>
+                  <li><NavLink className="text-gray-700 font-semibold uppercase heading" to="/services">SERVICES</NavLink></li>
+                  <li><NavLink className="text-gray-700 font-semibold uppercase heading" to="/gallery">GALLERY</NavLink></li>
                 </ul>
               </details>
             </li>

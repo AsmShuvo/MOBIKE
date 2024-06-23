@@ -52,13 +52,13 @@ const PopularBikes = () => {
                   <h2 className="text-2xl font-bold heading uppercase">
                     {bike.model}
                   </h2>
-                  <p className="text-gray-300 text-2xl font-bold heading uppercase">
+                  <p className=" text-xl font-bold heading uppercase">
                     {bike.brand}
                   </p>
-                  <p className="text-gray-300 text-xl font-semibold plain tracking-wider">
-                    Rent: ${bike.rent}/HOUR
+                  <p className="text-gray-300 text-lg font-semibold plain tracking-wider">
+                    Rent: BDT {bike.rent}/DAY
                   </p>
-                  <p className="text-gray-300 ">Year: {bike.mileage}KMPL</p>
+                  <p className="text-gray-300 text-lg font-semibold plain tracking-wider">MILEAGE: {bike.mileage}KMPL</p>
                 </div>
               </div>
             </div>
