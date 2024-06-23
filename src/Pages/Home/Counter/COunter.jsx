@@ -19,7 +19,7 @@ const COunter = () => {
   return (
     <div
       ref={ref}
-      className="flex gap-2 border items-center justify-evenly py-20"
+      className="flex gap-2 items-center justify-evenly py-20"
       style={{
         backgroundImage:
           "linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 1)), url(https://images.unsplash.com/photo-1558899447-76e97dc5a3c1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
