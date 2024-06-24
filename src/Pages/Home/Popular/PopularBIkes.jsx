@@ -9,6 +9,7 @@ import "swiper/css/autoplay";
 import "swiper/css/scrollbar";
 import "swiper/css/zoom";
 import SectionHeading from "../../../Components/SectionHeading";
+import { Link } from "react-router-dom";
 
 const PopularBikes = () => {
   const [bikes] = useBikes();
@@ -49,23 +50,16 @@ const PopularBikes = () => {
               />
               <div className="absolute bottom-0 left-0 right-0 w-fit rounded-sm bg-gray-500 bg-opacity-0 hover:bg-opacity-50 p-4 transition duration-500">
                 <div className="text-white">
-                  <h2 className="text-2xl font-bold heading uppercase">
+                  <h2 className="text-4xl font-bold heading uppercase">
                     {bike.model}
                   </h2>
-                  <p className=" text-xl font-bold heading uppercase">
-                    {bike.brand}
-                  </p>
-                  <p className="text-gray-300 text-lg font-semibold plain tracking-wider">
-                    Rent: BDT {bike.rent}/DAY
-                  </p>
-                  <p className="text-gray-300 text-lg font-semibold plain tracking-wider">MILEAGE: {bike.mileage}KMPL</p>
                 </div>
               </div>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="texy-center flex items-center justify-center mt-5"><button className="btn w-36 bg-primary text-white heading font-bold rounded-none border-none outline-none mx-auto text-center">SEE MORE</button></div>
+      <Link to="/bikes" className="texy-center flex items-center justify-center mt-5"><button className="btn w-36 bg-primary text-white heading font-bold rounded-none border-none outline-none mx-auto mt-4 mb-8 text-center">SEE MORE</button></Link>
     </div>
   );
 };

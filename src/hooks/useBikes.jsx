@@ -11,7 +11,7 @@ const useBikes = () => {
       return res.data;
     },
   });
-  console.log("All bikes", bikes);
+  // console.log("All bikes", bikes);
   return [bikes, bikesLoading, bikeRefetch];
 };
 
