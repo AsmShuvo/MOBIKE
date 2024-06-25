@@ -25,7 +25,7 @@ const Banner = () => {
               </p>
               <div className="flex flex-col md:flex-row gap-2">
                 <Link
-                  to="/discover"
+                  to="/register"
                   class="group relative inline-flex items-center overflow-hidden rounded bg-primary px-8 py-3 text-white focus:outline-none focus:ring active:bg-primary"
                 >
                   <span class="absolute -start-full transition-all group-hover:start-4">
@@ -101,7 +101,7 @@ const Banner = () => {
               </p>
               <div className="flex flex-col md:flex-row gap-2">
                 <Link
-                  to="/discover"
+                  to="/register"
                   class="group relative inline-flex items-center overflow-hidden rounded bg-primary px-8 py-3 text-white focus:outline-none focus:ring active:bg-primary"
                 >
                   <span class="absolute -start-full transition-all group-hover:start-4">
@@ -177,7 +177,7 @@ const Banner = () => {
               </p>
               <div className="flex flex-col md:flex-row gap-2">
                 <Link
-                  to="/discover"
+                  to="/register"
                   class="group relative inline-flex items-center overflow-hidden rounded bg-primary px-8 py-3 text-gray-200 focus:outline-none focus:ring active:bg-primary"
                 >
                   <span class="absolute -start-full transition-all group-hover:start-4">
@@ -254,7 +254,7 @@ const Banner = () => {
               </p>
               <div className="flex flex-col md:flex-row gap-2">
                 <Link
-                  to="/discover"
+                  to="/register"
                   class="group relative inline-flex items-center overflow-hidden rounded bg-primary px-8 py-3 text-white focus:outline-none focus:ring active:bg-primary"
                 >
                   <span class="absolute -start-full transition-all group-hover:start-4">

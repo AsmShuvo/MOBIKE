@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../Providers/AuthProviders";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user?.displayName)
   return (
     <div>
       <div className="navbar bg-white h-20">
@@ -113,6 +116,28 @@ const Navbar = () => {
               />
             </svg>
           </label>
+          {
+            user && <div className="dropdown dropdown-end">
+              <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src={user?.photoURL} />
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                <li>
+                  <a className="justify-between">
+                    {user?.displayName}
+                    <span className="badge">You</span>
+                  </a>
+                </li>
+                <li onClick={() => logOut()} ><a>Logout</a></li>
+              </ul>
+            </div>
+          }
         </div>
       </div>
     </div>
