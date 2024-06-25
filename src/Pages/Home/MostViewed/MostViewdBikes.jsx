@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaRegEye } from 'react-icons/fa';
+import { FaHeart, FaRegEye } from 'react-icons/fa';
 
 const MostViewdBikes = ({ bike }) => {
     return (
@@ -19,7 +19,7 @@ const MostViewdBikes = ({ bike }) => {
                             <p className="text-primary text-lg font-semibold plain tracking-widest">
                                 ৳ {bike.rent}<span className='text-white font-light text-sm'>/DAY</span>
                             </p><p className=" text-xl font-bold heading uppercase flex items-center gap-1">
-                                <FaRegEye /> {bike.love}
+                                <FaHeart /> {bike.love}
                             </p>
                         </div>
                         {/* <p className="text-gray-300 text-lg font-semibold plain tracking-wider">MILEAGE: {bike.mileage}KMPL</p> */}

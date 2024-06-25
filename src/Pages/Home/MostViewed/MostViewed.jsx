@@ -3,7 +3,7 @@ import SectionHeading from '../../../Components/SectionHeading';
 import useBikes from '../../../hooks/useBikes';
 import MostViewdBikes from './MostViewdBikes';
 import { Link } from 'react-router-dom';
-import { FaRegEye } from 'react-icons/fa';
+import { FaHeart, FaRegEye } from 'react-icons/fa';
 
 const MostViewed = () => {
     const [bikes, bikeRefetch] = useBikes();
@@ -38,7 +38,7 @@ const MostViewed = () => {
                                         ৳ {highestLovedBike?.rent}<span className='text-sm font-light text-white'>/DAY</span>
                                     </p>
                                     <p className=" text-xl font-bold heading uppercase flex items-center gap-1">
-                                        <FaRegEye /> {highestLovedBike?.love}
+                                        <FaHeart /> {highestLovedBike?.love}
                                     </p>
                                 </div>
                                 {/* <p className="text-gray-300 text-lg font-semibold plain tracking-wider">MILEAGE: {highestLovedBike.mileage}KMPL</p> */}
