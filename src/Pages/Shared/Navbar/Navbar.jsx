@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
+import { FaOpencart } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -96,7 +97,8 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end flex gap-2">
+          <Link to="/cart"><FaOpencart title="cart" className="text-4xl text-primary p-1 rounded" /></Link>
           <label className="input input-bordered border-gray-200 text-white flex items-center gap-2">
             <input
               type="text"
@@ -119,6 +121,7 @@ const Navbar = () => {
           {
             user && <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+
                 <div className="w-10 rounded-full">
                   <img
                     alt="Tailwind CSS Navbar component"

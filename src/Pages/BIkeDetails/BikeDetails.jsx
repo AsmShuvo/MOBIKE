@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useAxios from '../../hooks/useAxios';
 import { FaEye } from 'react-icons/fa';
 import { PiPersonSimpleWalk } from 'react-icons/pi';
+import Swal from 'sweetalert2';
 
 const BikeDetails = () => {
     const { id } = useParams();
@@ -22,7 +23,43 @@ const BikeDetails = () => {
 
     const bike = bikeDetails[0];
     console.log(bike);
-    const { model, brand, rent, mileage, owner_name, love, views, image } = bike;
+    const { model, brand, rent, mileage, owner_name, love, views, image, status } = bike;
+
+    const [alreadyBooked, setAlreadyBooke] = useState(false);
+    const handleAddToCart = () => {
+        if (status == "booked") return;
+        console.log("clicked")
+        if (alreadyBooked) {
+            Swal.fire("This item is already added to wishlsit by you");
+            return;
+        }
+
+        const newBike = {
+            model,
+            brand,
+            rent,
+            mileage,
+            owner_name,
+            love,
+            views,
+            image,
+            status,
+        }
+
+        axios.post("/cart", newBike)
+            .then(data => {
+                console.log(data.data);
+                console.log(data.data.insertedId);
+                if (data.data.insertedId) {
+                    Swal.fire("Added to wishlist");
+                    console.log("Item added");
+                    setAlreadyBooke(true);
+
+                }
+            })
+
+
+    }
 
     return (
         <div className="relative flex flex-col-reverse py-16 lg:pt-0 lg:flex-col lg:pb-0 bg-gray-100">
@@ -64,8 +101,8 @@ const BikeDetails = () => {
                         </p>
                     </div>
                     <p className=" mb-8 flex gap-1 items-center font-semibold uppercase poppins text-gray-500"> <PiPersonSimpleWalk /> Owner: {owner_name}</p>
-                    <button className="px-4 uppercase plain tracking-wider py-2 bg-blue-600 text-white shadow-md hover:bg-blue-700 focus:shadow-outline focus:outline-none">
-                        ADD TO WISHLIST
+                    <button onClick={handleAddToCart} className="px-4 uppercase plain tracking-wider py-2 bg-blue-600 text-white shadow-md hover:bg-blue-700 focus:shadow-outline focus:outline-none">
+                        {status == "booker" ? "BOOKED" : "ADD TO WISHLIST"}
                     </button>
                 </div>
             </div>

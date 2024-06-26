@@ -1,0 +1,7 @@
+View bike: 
+# bike e click korle bike er view update hobe
+
+View Details:
+# show Details
+# add to cart option 
+# love react dile love upadte hobe

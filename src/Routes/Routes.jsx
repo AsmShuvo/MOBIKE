@@ -7,6 +7,7 @@ import Reviews from "../Pages/Home/Reviews/Reviews";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import BikeDetails from "../Pages/BIkeDetails/BikeDetails";
+import Cart from "../Pages/Cart/Cart";
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
       {
         path: "/bike-details/:id",
         element: <BikeDetails />
+      },
+      {
+        path: "/cart",
+        element: <Cart />
       }
     ],
   },
