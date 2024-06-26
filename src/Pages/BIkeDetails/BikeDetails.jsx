@@ -1,14 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useAxios from '../../hooks/useAxios';
 import { FaEye } from 'react-icons/fa';
 import { PiPersonSimpleWalk } from 'react-icons/pi';
 import Swal from 'sweetalert2';
+import { AuthContext } from './../../Providers/AuthProviders';
 
 const BikeDetails = () => {
     const { id } = useParams();
-    console.log(id);
+    const { user } = useContext(AuthContext)
     const axios = useAxios();
     const { data: bikeDetails, refetch: bikeDetailsRefetch } = useQuery({
         queryKey: ["bikeDetailsQuery"],
@@ -17,18 +18,15 @@ const BikeDetails = () => {
             return res.data;
         }
     })
-    console.log(bikeDetails);
 
     if (!bikeDetails || bikeDetails.length === 0) return <div>Loading...</div>;
 
     const bike = bikeDetails[0];
-    console.log(bike);
     const { model, brand, rent, mileage, owner_name, love, views, image, status } = bike;
 
     const [alreadyBooked, setAlreadyBooke] = useState(false);
     const handleAddToCart = () => {
-        if (status == "booked") return;
-        console.log("clicked")
+        if (status == "booked") { return; }
         if (alreadyBooked) {
             Swal.fire("This item is already added to wishlsit by you");
             return;
@@ -44,21 +42,16 @@ const BikeDetails = () => {
             views,
             image,
             status,
+            email: user?.email,
         }
 
         axios.post("/cart", newBike)
             .then(data => {
-                console.log(data.data);
-                console.log(data.data.insertedId);
                 if (data.data.insertedId) {
                     Swal.fire("Added to wishlist");
-                    console.log("Item added");
                     setAlreadyBooke(true);
-
                 }
             })
-
-
     }
 
     return (
