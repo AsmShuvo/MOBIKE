@@ -6,6 +6,7 @@ import Bikes from "../Pages/Bikes/Bikes";
 import Reviews from "../Pages/Home/Reviews/Reviews";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
+import BikeDetails from "../Pages/BIkeDetails/BikeDetails";
 
 export const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
         path: "/register",
         element: <Register />
       },
+      {
+        path: "/bike-details/:id",
+        element: <BikeDetails />
+      }
     ],
   },
 ]);
