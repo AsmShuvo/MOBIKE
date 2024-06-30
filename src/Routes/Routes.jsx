@@ -8,11 +8,19 @@ import Login from "../Login/Login";
 import Register from "../Register/Register";
 import BikeDetails from "../Pages/BIkeDetails/BikeDetails";
 import Cart from "../Pages/Cart/Cart";
+import Blogs from "../Pages/Blogs/Blogs";
+import PrivateRoute from "./PrivateRoutes";
+import CreateBlog from "../Pages/CreateBlog/CreateBlog";
+import AboutUs from "../Pages/AboutUs/AboutUs";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import Dashboard from "../Layout/Dashboard";
+import UserProfile from "../Pages/Dashboard/UserPanel/UserProfile/UserProfile";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -40,12 +48,35 @@ export const router = createBrowserRouter([
       },
       {
         path: "/bike-details/:id",
-        element: <BikeDetails />
+        element: <PrivateRoute><BikeDetails /></PrivateRoute>
       },
       {
-        path: "/cart",
-        element: <Cart />
-      }
+        path: "/blogs",
+        element: <Blogs />
+      },
+      {
+        path: "/create-blog",
+        element: <CreateBlog />
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs />
+      },
     ],
   },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "profile",
+        element: <UserProfile />
+      },
+      {
+        path: "cart",
+        element: <Cart />
+      }
+    ]
+  }
 ]);

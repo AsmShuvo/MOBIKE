@@ -14,10 +14,10 @@ const Banner = () => {
           <img src={img1} className="w-full" />
           <div className="absolute h-full items-center bg-gradient-to-r from-[#151515] to-[rgba(21,21,21,0)]  flex flex-col left-0 top-0 gap-4">
             <div className="space-y-7 pl-16 mt-16">
-              <h1 className="text-7xl tracking-wider heading w-1/2 uppercase text-gray-200 font-bold">
+              <h1 className="text-7xl tracking-wider heading w-1/2 uppercase text-gray-50 font-bold">
                 Premium motorcycle rental
               </h1>
-              <p className="text-lg w-1/2 poppins text-gray-200">
+              <p className="text-lg w-1/2 poppins text-gray-50">
                 Discover top-quality bikes for your ultimate riding experience.
                 Enjoy flexible rental options tailored to your adventure needs.
                 Whether you're a seasoned rider or a novice, we have the perfect
@@ -91,10 +91,10 @@ const Banner = () => {
           <img src={img2} className="w-full" />
           <div className="absolute h-full items-center bg-gradient-to-r from-[#151515] to-[rgba(21,21,21,0)]  flex flex-col left-0 top-0 gap-4">
             <div className="space-y-7 pl-16 mt-16">
-              <h1 className="text-7xl tracking-wider heading w-1/2 uppercase text-gray-200 font-bold">
+              <h1 className="text-7xl tracking-wider heading w-1/2 uppercase text-gray-50 font-bold">
                 Explore Uncharted Roads
               </h1>
-              <p className="text-lg w-1/2 poppins text-gray-200">
+              <p className="text-lg w-1/2 poppins text-gray-50">
                 Venture beyond the ordinary with our reliable motorcycles. Chart
                 your own course and create unforgettable memories. Embark on
                 journeys to scenic routes and hidden gems.
@@ -126,7 +126,7 @@ const Banner = () => {
                   </span>
                 </Link>
                 <Link
-                  class="group relative inline-flex items-center overflow-hidden rounded px-8 py-3 text-gray-200 focus:outline-none focus:ring "
+                  class="group relative inline-flex items-center overflow-hidden rounded px-8 py-3 text-gray-50 focus:outline-none focus:ring "
                   to="/latest"
                 >
                   <span class="absolute -end-full transition-all group-hover:end-4">
@@ -167,10 +167,10 @@ const Banner = () => {
           <img src={img3} className="w-full" />
           <div className="absolute h-full items-center bg-gradient-to-r from-[#151515] to-[rgba(21,21,21,0)]  flex flex-col left-0 top-0 gap-4">
             <div className="space-y-7 pl-16 mt-16">
-              <h1 className="text-7xl tracking-wider heading w-1/2 text-gray-200 uppercase font-bold">
+              <h1 className="text-7xl tracking-wider heading w-1/2 text-gray-50 uppercase font-bold">
                 Unleash the Adventurer in You
               </h1>
-              <p className="text-lg w-1/2 poppins text-gray-200">
+              <p className="text-lg w-1/2 poppins text-gray-50">
                 Embrace the thrill of the open road with our premium rentals.
                 Experience freedom like never before with every ride. Push your
                 boundaries and explore new horizons confidently.
@@ -178,7 +178,7 @@ const Banner = () => {
               <div className="flex flex-col md:flex-row gap-2">
                 <Link
                   to="/register"
-                  class="group relative inline-flex items-center overflow-hidden rounded bg-primary px-8 py-3 text-gray-200 focus:outline-none focus:ring active:bg-primary"
+                  class="group relative inline-flex items-center overflow-hidden rounded bg-primary px-8 py-3 text-gray-50 focus:outline-none focus:ring active:bg-primary"
                 >
                   <span class="absolute -start-full transition-all group-hover:start-4">
                     <svg
@@ -243,10 +243,10 @@ const Banner = () => {
           <img src={img4} className="w-full" />
           <div className="absolute h-full items-center bg-gradient-to-r from-[#151515] to-[rgba(21,21,21,0)]  flex flex-col left-0 top-0 gap-4">
             <div className="space-y-7 pl-16 mt-16">
-              <h1 className="text-7xl tracking-wider heading uppercase w-1/2 text-gray-200 font-bold">
+              <h1 className="text-7xl tracking-wider heading uppercase w-1/2 text-gray-50 font-bold">
                 Ride with Confidence and Style
               </h1>
-              <p className="text-lg w-1/2 poppins text-gray-200">
+              <p className="text-lg w-1/2 poppins text-gray-50">
                 Feel secure with our well-maintained and stylish bikes. Make a
                 statement wherever you go with our sleek rentals. Ride assured,
                 knowing you're on a top-notch machine designed for performance

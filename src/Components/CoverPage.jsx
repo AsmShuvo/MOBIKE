@@ -2,7 +2,7 @@ import React from 'react';
 
 const CoverPage = ({ img, text, heading }) => {
     const containerStyle = {
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${img})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url(${img})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '80vh', // Adjust as needed for your layout

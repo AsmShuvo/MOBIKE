@@ -38,7 +38,19 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink className="heading font-bold" to="/">
+                <details className="border-none  outline-none">
+                  <summary className="m-1 btn border-white outline-white uppercase heading text-gray-500 font-bold">PAGES</summary>
+                  <ul className=" shadow menu dropdown-content z-[1] rounded-box">
+                    <li><NavLink className="text-gray-700 font-semibold uppercase heading" to="/bikes">MOTORCYCLES</NavLink></li>
+                    <li><NavLink className="text-gray-700 font-semibold uppercase heading" to="/blogs">BLOGS</NavLink></li>
+                    <li><NavLink className="text-gray-700 font-semibold uppercase heading" to="/about-us">TEAM</NavLink></li>
+                    <li><NavLink className="text-gray-700 font-semibold uppercase heading" to="/services">SERVICES</NavLink></li>
+                    <li><NavLink className="text-gray-700 font-semibold uppercase heading" to="/gallery">GALLERY</NavLink></li>
+                  </ul>
+                </details>
+              </li>
+              <li>
+                <NavLink className="heading font-bold" to="/about-us">
                   ABOUT US
                 </NavLink>
               </li>
@@ -73,7 +85,8 @@ const Navbar = () => {
                 <summary className="m-1 btn border-white outline-white uppercase heading text-xl text-gray-500 font-bold">PAGES</summary>
                 <ul className="p-2 shadow menu dropdown-content z-[1] rounded-box w-52">
                   <li><NavLink className="text-gray-700 font-semibold uppercase heading" to="/bikes">MOTORCYCLES</NavLink></li>
-                  <li><NavLink className="text-gray-700 font-semibold uppercase heading" to="/team">TEAM</NavLink></li>
+                  <li><NavLink className="text-gray-700 font-semibold uppercase heading" to="/blogs">BLOGS</NavLink></li>
+                  <li><NavLink className="text-gray-700 font-semibold uppercase heading" to="/about-us">TEAM</NavLink></li>
                   <li><NavLink className="text-gray-700 font-semibold uppercase heading" to="/services">SERVICES</NavLink></li>
                   <li><NavLink className="text-gray-700 font-semibold uppercase heading" to="/gallery">GALLERY</NavLink></li>
                 </ul>
@@ -82,7 +95,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 className="heading text-xl text-gray-500 font-bold"
-                to="/about"
+                to="/about-us"
               >
                 ABOUT US
               </NavLink>
@@ -98,7 +111,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end flex gap-2">
-          <Link to="/cart"><FaOpencart title="cart" className="text-4xl text-primary p-1 rounded" /></Link>
+          <Link to="/dashboard/cart"><FaOpencart title="cart" className="text-4xl text-primary p-1 rounded" /></Link>
           <label className="input input-bordered border-gray-200 text-white flex items-center gap-2">
             <input
               type="text"

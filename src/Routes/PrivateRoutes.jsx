@@ -1,4 +1,12 @@
-<div className="flex items-center justify-center w-full h-[100vh] text-gray-900 dark:text-gray-100 dark:bg-gray-950">
+import React, { useContext } from "react";
+import { Navigate } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProviders";
+
+const PrivateRoute = ({ children }) => {
+  const { user, isLoading } = useContext(AuthContext);
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center w-full h-[100vh] text-gray-900 dark:text-gray-100 dark:bg-gray-950">
         <div>
           <h1 className="text-xl md:text-7xl font-bold flex items-center">
             L
@@ -18,3 +26,12 @@
           </h1>
         </div>
       </div>
+    )
+  }
+  if (user) {
+    return children;
+  }
+  return <Navigate to="/login" />;
+};
+
+export default PrivateRoute;
