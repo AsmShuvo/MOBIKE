@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaEye } from 'react-icons/fa';
 import ReactPaginate from 'react-paginate';
 import { Link } from 'react-router-dom';
 
@@ -21,15 +22,12 @@ const Bike = ({ bike }) => {
                     <img className="w-full cursor-pointer h-80" src={image} alt="" />
                     <div className="flex p-4 justify-between">
                         <div className="flex items-center space-x-2">
-                            <img className="w-10 h-10 rounded-full" src="https://images.unsplash.com/photo-1604636073028-cc7c73f7b335?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="sara" />
-                            <h2 className="text-gray-800 font-bold cursor-pointer">{owner_name}</h2>
+                            <h2 className="text-gray-800 heading tracking-wider font-semibold text-sm cursor-pointer">Owner:{owner_name}</h2>
                         </div>
                         <div className="flex space-x-2">
                             <div className="flex space-x-1 items-center">
                                 <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-gray-600 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                                    </svg>
+                                    <FaEye className='text-xl text-gray-700' />
                                 </span>
                                 <span>{views}</span>
                             </div>

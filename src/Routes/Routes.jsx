@@ -15,6 +15,8 @@ import AboutUs from "../Pages/AboutUs/AboutUs";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Dashboard from "../Layout/Dashboard";
 import UserProfile from "../Pages/Dashboard/UserPanel/UserProfile/UserProfile";
+import CreatePost from "../Pages/Dashboard/AdminPanel/CreateItems/CreatePost";
+import ManagePosts from "../Pages/Dashboard/AdminPanel/ManagePosts/ManagePosts";
 
 export const router = createBrowserRouter([
   {
@@ -74,9 +76,17 @@ export const router = createBrowserRouter([
         element: <UserProfile />
       },
       {
-        path: "cart",
-        element: <Cart />
-      }
+        path: "post-bike",
+        element: <CreatePost />
+      },
+      {
+        path: "manage-posts",
+        element: <ManagePosts />
+      },
+      {
+        path: "manage-bikes",
+        element: <ManagePosts />
+      },
     ]
   }
 ]);

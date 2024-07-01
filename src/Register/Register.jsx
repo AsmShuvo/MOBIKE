@@ -5,12 +5,14 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { updateProfile } from "firebase/auth";
 import { FaRegHandPointDown } from "react-icons/fa";
 import { AuthContext } from "../Providers/AuthProviders";
+import useAxios from "../hooks/useAxios";
 
 const Register = () => {
     const { createUser, user, myTheme, logOut } = useContext(AuthContext);
     const [passData, setPassData] = useState("");
     const [showPass, setShowPass] = useState("");
     const nevigate = useNavigate();
+    const axios = useAxios();
 
     const handleInput = (e) => {
         setPassData(e.target.value);
@@ -28,6 +30,11 @@ const Register = () => {
         const password = form.password.value;
         const confirm = form.confirm.value;
         const name = form.name.value;
+        const user = {
+            email,
+            name,
+            photo
+        }
 
         if (password != confirm) {
             Swal.fire({
@@ -58,6 +65,13 @@ const Register = () => {
                         // console.log("Profile Updated");
                         // console.log("Creaetd user : ", userCredential);
                         Swal.fire("Registration Successful. Please Login to continue");
+                        axios.post("/users", user)
+                            .then(data => {
+                                console.log("User send to database")
+                            })
+                            .catch(err => {
+                                console.log("Error while sending user in db", err)
+                            })
                         logOut();
                         form.reset();
                         nevigate("/login");
@@ -152,7 +166,9 @@ const Register = () => {
                                     className="btn bg-red text-white"
                                 />
                             </div>
+                            <p className="text-gray-100 ml-2">Already have an account? <Link to="/login" className="font-semibold">Login</Link></p>
                         </form>
+
                     </div>
                 </div>
             </div>

@@ -1,18 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { CgProfile } from 'react-icons/cg';
-import { FaHome, FaPersonBooth } from 'react-icons/fa';
-import { FaManatSign, FaPeopleGroup } from 'react-icons/fa6';
+import { FaHome, FaList, FaMotorcycle, FaPersonBooth } from 'react-icons/fa';
+import { FaManatSign, FaPeopleGroup, FaPerson, FaWeightScale } from 'react-icons/fa6';
 import { IoIosStats } from 'react-icons/io';
 import { LuShoppingCart } from 'react-icons/lu';
-import { MdPayment } from 'react-icons/md';
-import { Link, Outlet } from 'react-router-dom';
+import { MdAdminPanelSettings, MdPayment } from 'react-icons/md';
+import { Link, NavLink, Outlet } from 'react-router-dom';
+import { AuthContext } from '../Providers/AuthProviders';
+import { useAdmin } from '../hooks/useAdmin';
+import { CiSettings } from 'react-icons/ci';
 
 const Dashboard = () => {
+    const { user } = useContext(AuthContext);
+    const { isAdmin } = useAdmin();
+    console.log(isAdmin);
     return (
         <div className='flex flex-row-reverse'>
             <div>
 
-                <aside className="fixed border-4 inset-y-0 left-0 bg-white shadow-md max-h-screen">
+                <aside className="fixed inset-y-0 left-0 bg-white shadow-md shadow-gray-400 max-h-screen">
                     <div className="flex flex-col justify-between h-full">
                         <div className="flex-grow">
                             <div className="px-4 py-6 text-center border-b">
@@ -22,49 +28,119 @@ const Dashboard = () => {
                             </div>
                             <div className="p-4">
                                 <ul className="space-y-1">
-                                    <li>
-                                        <Link to="/"
-                                            href="javascript:void(0)"
-                                            className="flex gap-2 items-center bg-yellow-200 rounded-xl font-bold text-sm text-yellow-900 py-3 px-4"
-                                        >
-                                            <FaHome />
-                                            Home
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/dashboard/profile"
-                                            href="javascript:void(0)"
-                                            className="flex gap-2 items-center bg-yellow-200 rounded-xl font-bold text-sm text-yellow-900 py-3 px-4"
-                                        >
-                                            <CgProfile />
-                                            Your Profile
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/dashboard/cart"
-                                            href="javascript:void(0)"
-                                            className="flex gap-2 items-center bg-yellow-200 rounded-xl font-bold text-sm text-yellow-900 py-3 px-4"
-                                        >
-                                            <LuShoppingCart />
-                                            Cart
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/dashboard/analytics"
-                                            className="flex gap-2 items-center bg-yellow-200 rounded-xl font-bold text-sm text-yellow-900 py-3 px-4"
-                                        >
-                                            <IoIosStats /> Analytics
+                                    {
+                                        isAdmin ?
+                                            <>
+                                                {/*--------------------- Admin routes------------ */}
+                                                <li>
+                                                    <NavLink to="/dashboard/post-bike"
+                                                        href="javascript:void(0)"
+                                                        className="flex gap-2 items-center bg-yellow-200 rounded-xl font-bold text-sm text-yellow-900 py-3 px-4"
+                                                    >
+                                                        <FaMotorcycle />
+                                                        Post Bike
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to="/dashboard/manage-posts"
+                                                        href="javascript:void(0)"
+                                                        className="flex gap-2 items-center bg-yellow-200 rounded-xl font-bold text-sm text-yellow-900 py-3 px-4"
+                                                    >
+                                                        <CiSettings />
+                                                        Manage Posts
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to="/dashboard/manage-bikes"
+                                                        href="javascript:void(0)"
+                                                        className="flex gap-2 items-center bg-yellow-200 rounded-xl font-bold text-sm text-yellow-900 py-3 px-4"
+                                                    >
+                                                        <FaList />
+                                                        Manage Bookings
+                                                    </NavLink>
+                                                </li>
 
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <a
-                                            href="javascript:void(0)"
-                                            className="flex gap-2 items-center bg-yellow-200 rounded-xl font-bold text-sm text-yellow-900 py-3 px-4"
-                                        >
-                                            <MdPayment /> Payment History
-                                        </a>
-                                    </li>
+                                                <li>
+                                                    <NavLink to="/"
+                                                        href="javascript:void(0)"
+                                                        className="flex gap-2 items-center bg-primary rounded-xl font-bold text-sm text-white py-3 px-4"
+                                                    >
+                                                        <FaHome />
+                                                        Home
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to="/bikes"
+                                                        href="javascript:void(0)"
+                                                        className="flex gap-2 items-center bg-green-600 rounded-xl font-bold text-sm text-white py-3 px-4"
+                                                    >
+                                                        <FaMotorcycle />
+                                                        All Posts
+                                                    </NavLink>
+                                                </li>
+                                            </>
+                                            :
+                                            <>
+                                                {/*--------------------- user routes------------ */}
+                                                <li>
+                                                    <NavLink to="/dashboard/profile"
+                                                        href="javascript:void(0)"
+                                                        className="flex gap-2 items-center bg-yellow-200 rounded-xl font-bold text-sm text-yellow-900 py-3 px-4"
+                                                    >
+                                                        <CgProfile />
+                                                        Your Profile
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to="/dashboard/cart"
+                                                        href="javascript:void(0)"
+                                                        className="flex gap-2 items-center bg-yellow-200 rounded-xl font-bold text-sm text-yellow-900 py-3 px-4"
+                                                    >
+                                                        <LuShoppingCart />
+                                                        Cart
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to="/dashboard/analytics"
+                                                        className="flex gap-2 items-center bg-yellow-200 rounded-xl font-bold text-sm text-yellow-900 py-3 px-4"
+                                                    >
+                                                        <IoIosStats /> Analytics
+
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="javascript:void(0)"
+                                                        className="flex gap-2 items-center bg-yellow-200 rounded-xl font-bold text-sm text-yellow-900 py-3 px-4"
+                                                    >
+                                                        <MdPayment /> Payment History
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <NavLink to="/"
+                                                        href="javascript:void(0)"
+                                                        className="flex gap-2 items-center bg-primary rounded-xl font-bold text-sm text-white py-3 px-4"
+                                                    >
+                                                        <FaHome />
+                                                        Home
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to="/bikes"
+                                                        href="javascript:void(0)"
+                                                        className="flex gap-2 items-center bg-green-600 rounded-xl font-bold text-sm text-white py-3 px-4"
+                                                    >
+                                                        <FaMotorcycle />
+                                                        All Posts
+                                                    </NavLink>
+                                                </li>
+                                            </>
+                                    }
+
+
+
+
+
 
                                 </ul>
                             </div>
