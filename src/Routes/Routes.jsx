@@ -17,6 +17,7 @@ import Dashboard from "../Layout/Dashboard";
 import UserProfile from "../Pages/Dashboard/UserPanel/UserProfile/UserProfile";
 import CreatePost from "../Pages/Dashboard/AdminPanel/CreateItems/CreatePost";
 import ManagePosts from "../Pages/Dashboard/AdminPanel/ManagePosts/ManagePosts";
+import Payment from "../Pages/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -87,6 +88,14 @@ export const router = createBrowserRouter([
         path: "manage-bikes",
         element: <ManagePosts />
       },
+      {
+        path: "payment",
+        element: <Payment />
+      },
+      {
+        path: "cart",
+        element: <Cart />
+      }
     ]
   }
 ]);

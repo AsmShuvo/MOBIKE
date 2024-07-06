@@ -111,6 +111,10 @@ const Cart = () => {
                     </div>
                 </div>
             </section>
+            <Link to="/dashboard/payment">
+                <div className='flex items-center justify-center'>
+                    <button className='btn btn-sm btn-success uppercase text-white font-semibold mx-auto'>Pay</button>
+                </div></Link>
         </div>
     );
 };
