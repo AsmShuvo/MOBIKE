@@ -18,6 +18,8 @@ import UserProfile from "../Pages/Dashboard/UserPanel/UserProfile/UserProfile";
 import CreatePost from "../Pages/Dashboard/AdminPanel/CreateItems/CreatePost";
 import ManagePosts from "../Pages/Dashboard/AdminPanel/ManagePosts/ManagePosts";
 import Payment from "../Pages/Payment/Payment";
+import PaymentHistory from "../Pages/Dashboard/UserPanel/PaymentHistory/PaymentHistory";
+import ManageBookings from "../Pages/Dashboard/AdminPanel/ManageBookings/ManageBookings";
 
 export const router = createBrowserRouter([
   {
@@ -85,8 +87,8 @@ export const router = createBrowserRouter([
         element: <ManagePosts />
       },
       {
-        path: "manage-bikes",
-        element: <ManagePosts />
+        path: "manage-bookings",
+        element: <ManageBookings />
       },
       {
         path: "payment",
@@ -95,6 +97,10 @@ export const router = createBrowserRouter([
       {
         path: "cart",
         element: <Cart />
+      },
+      {
+        path: "payments-history",
+        element: <PaymentHistory />
       }
     ]
   }

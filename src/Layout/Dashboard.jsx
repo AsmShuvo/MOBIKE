@@ -51,7 +51,7 @@ const Dashboard = () => {
                                                     </NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink to="/dashboard/manage-bikes"
+                                                    <NavLink to="/dashboard/manage-bookings"
                                                         href="javascript:void(0)"
                                                         className="flex gap-2 items-center bg-yellow-200 rounded-xl font-bold text-sm text-yellow-900 py-3 px-4"
                                                     >
@@ -109,12 +109,11 @@ const Dashboard = () => {
                                                     </NavLink>
                                                 </li>
                                                 <li>
-                                                    <a
-                                                        href="javascript:void(0)"
+                                                    <NavLink to="payments-history"
                                                         className="flex gap-2 items-center bg-yellow-200 rounded-xl font-bold text-sm text-yellow-900 py-3 px-4"
                                                     >
                                                         <MdPayment /> Payment History
-                                                    </a>
+                                                    </NavLink>
                                                 </li>
                                                 <li>
                                                     <NavLink to="/"

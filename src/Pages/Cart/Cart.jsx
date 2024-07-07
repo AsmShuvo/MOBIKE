@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import CoverPage from '../../Components/CoverPage';
 import { useQuery } from '@tanstack/react-query';
 import useAxios from '../../hooks/useAxios';
 import CartItem from './CartItem';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Providers/AuthProviders';
 
 const Cart = () => {
     const axios = useAxios();
+    const { user } = useContext(AuthContext)
     const { data: cart, refetch: cartRefetch } = useQuery({
         queryKey: ["cart"],
         queryFn: async () => {
-            const res = await axios.get("/cart");
+            const res = await axios.get(`/cart/${user?.email}`);
             return res.data;
         }
     });

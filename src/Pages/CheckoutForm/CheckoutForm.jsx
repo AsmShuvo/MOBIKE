@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import useAxios from "../../hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import { AuthContext } from "../../Providers/AuthProviders";
+import Swal from "sweetalert2";
 
 const CheckoutForm = () => {
     const { user } = useContext(AuthContext)
@@ -21,19 +22,21 @@ const CheckoutForm = () => {
             return res.data;
         }
     });
-    console.log(cart);
+    // console.log(cart);
     const price = cart?.reduce((total, item) => total + item.rent, 0)
-    console.log(price);
+    // console.log(price);
 
     useEffect(() => {
-        axios.post('/create-payment-intent', { price })
-            .then(res => {
-                console.log(res.data.clientSecret);
-                setClientSecret(res.data.clientSecret);
-            })
-            .catch(err => {
-                console.log("Error while posting", err)
-            })
+        if (price > 0) {
+            axios.post('/create-payment-intent', { price })
+                .then(res => {
+                    // console.log(res.data.clientSecret);
+                    setClientSecret(res.data.clientSecret);
+                })
+                .catch(err => {
+                    console.log("Error while posting", err);
+                })
+        }
     }, [axios, price])
 
     const handleSubmit = async (e) => {
@@ -80,12 +83,23 @@ const CheckoutForm = () => {
                 price,
                 date: new Date(),
                 cartIds: cart?.map(item => item._id),
+                bikeModels: cart?.map(item => item.model),
                 status: 'pending',
                 transactionID: paymentIntent.id
             }
             console.log("cart ids", payment.cartIds);
-            const res = axios.post('/payments', payment)
-            console.log("payment saved", res.data)
+            axios.post('/payments', payment)
+                .then(data => {
+                    console.log(data.data?.paymentResult?.insertedIdcd);
+                    if (data.data?.paymentResult?.insertedId) {
+                        Swal.fire("Payment was successful. Wait for the confirmation");
+                        console.log("object")
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+
         }
 
     }
