@@ -2,19 +2,19 @@
 
 This is an interactive bike rental website
 
-Tech Stack:
+Tech Stack: <br>
 Frontend : `React` `TailwindCSS` <br>
 Backend : `Express` <br>
 Database: `MongoDB` <br>
 User authentication: `Firebase` <br>
 
 Getting Started
+Go to - command prompt / powershell / terminal of your system
 
 ```
-    git clone https://github.com/AsmShuvo/MOBIKE.git PROJECT_NAME
-    cd PROJECT_NAME
+    git clone https://github.com/AsmShuvo/MOBIKE.git
+    cd MOBIKE
     npm install
-    npm start
 ```
 
 Create a `.env.local` file at the root folder and paste this code
@@ -28,6 +28,12 @@ Create a `.env.local` file at the root folder and paste this code
     VITE_appId = 1:621656344903:web:9e5a23319cc6808d0ea462
     VITE_measurementId = G-P8ZSM7YH3
     VITE_Payment_Key = pk_test_51PZas5RsYsrBPiumWxorBi5QASoQ9oVTNxSrmMDFVVwVDyaXDfrTIgRfGd6K9krPfiVhGTXLqj0kG1ZO4Ns5rjOV008v8W6mos
+```
+
+Now write this command
+
+```
+   npm run dev
 ```
 
 ## [Live Link] (https://mo-bike-64cea.web.app/)
