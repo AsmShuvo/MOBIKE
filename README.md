@@ -38,8 +38,6 @@ Now write this command
 
 ## [Live Link](https://mo-bike-64cea.web.app/)
 
-##### [https://mo-bike-64cea.web.app/]
-
 ## Website Description
 
 <ol>
@@ -49,5 +47,6 @@ Now write this command
     <li>User can post blogs after booking is accepted by admin</li>
     <li>Admin can create update delete rental posts</li>
     <li>Admin can manage the bookings</li>
-    <li>Website backend is created with `Express`. Database used is `MongoDB` and Deployed in `Firebase`</li>
+    <li>Website backend is created with Express. Database used is MongoDB and Deployed in Firebase</li>
+    <li>This is a responsive website</li>
 </ol>
