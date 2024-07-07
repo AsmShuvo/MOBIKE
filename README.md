@@ -3,10 +3,10 @@
 This is an interactive bike rental website
 
 Tech Stack:
-Frontend : `React` `TailwindCSS`
-Backend : `Express`
-Database: `MongoDB`
-User authentication: `Firebase`
+Frontend : `React` `TailwindCSS` <br>
+Backend : `Express` <br>
+Database: `MongoDB` <br>
+User authentication: `Firebase` <br>
 
 Getting Started
 
