@@ -76,6 +76,9 @@ const ManageBookings = () => {
                             <th scope="col" className="px-6 py-3">
                                 DATE
                             </th>
+                            <th scope="col" className="px-6 py-3">
+                                status
+                            </th>
                             <th scope="col" className="px-6 py-3 text-center">
                                 Action
                             </th>
@@ -84,8 +87,6 @@ const ManageBookings = () => {
                     <tbody>
                         {
                             payments?.map(payment =>
-
-                                payment.status != "Declined" &&
 
                                 <tr key={payment._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -96,6 +97,9 @@ const ManageBookings = () => {
                                     </td>
                                     <td className="px-6 py-4">
                                         {formatDate(payment.date)}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        {payment.status}
                                     </td>
                                     <td className="text-center py-4">
                                         <button onClick={() => handleApprove(payment)} className='btn btn-link mx-1'>Approve</button>
