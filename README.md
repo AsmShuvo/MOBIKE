@@ -36,7 +36,7 @@ Now write this command
    npm run dev
 ```
 
-## [Live Link] (https://mo-bike-64cea.web.app/)
+## [Live Link](https://mo-bike-64cea.web.app/)
 
 ##### [https://mo-bike-64cea.web.app/]
 
