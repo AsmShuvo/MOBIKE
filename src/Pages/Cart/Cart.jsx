@@ -78,7 +78,7 @@ const Cart = () => {
                                         <dd class="text-base font-bold text-gray-900 dark:text-gray-700"><span className='text-2xl mr-1'>৳</span>{totalPrice - discount}.00</dd>
                                     </dl>
                                 </div>
-                                <a href="#" class="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-gray-600 btn hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Proceed to Checkout</a>
+                                <Link to="/dashboard/payment" class="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5  font-medium text-lg btn btn-primary text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Proceed to Checkout</Link>
                                 <div class="flex items-center justify-center gap-2">
                                     <span class="text-sm font-normal text-gray-500 dark:text-gray-400"> or </span>
                                     <Link to="/bikes" title="" class="inline-flex items-center gap-2 text-sm font-medium text-primary underline hover:no-underline dark:text-primary-500">
@@ -113,10 +113,6 @@ const Cart = () => {
                     </div>
                 </div>
             </section>
-            <Link to="/dashboard/payment">
-                <div className='flex items-center justify-center'>
-                    <button className='btn btn-sm btn-success uppercase text-white font-semibold mx-auto'>Pay</button>
-                </div></Link>
         </div>
     );
 };

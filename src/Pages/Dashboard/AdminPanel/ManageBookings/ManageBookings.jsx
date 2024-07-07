@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import useAxios from '../../../../hooks/useAxios';
 import { AuthContext } from '../../../../Providers/AuthProviders';
 import { useQuery } from '@tanstack/react-query';
+import Payment from './../../../Payment/Payment';
+import Swal from 'sweetalert2';
 
 const ManageBookings = () => {
     const axios = useAxios();
@@ -17,6 +19,44 @@ const ManageBookings = () => {
     const formatDate = (dateString) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(dateString).toLocaleDateString(undefined, options);
+    };
+    const handleReturnPayement = (payment) => {
+        // not been implemented yet
+    }
+
+    const handleDecline = (payment) => {
+        payment.statys = "Declined";
+        axios.patch(`/payments/${payment._id}/${payment.email}/Declined`, payment)
+            .then(data => {
+                console.log(data.data);
+                if (data.data.modifiedCount) {
+                    Swal.fire({
+                        title: "Payment Cancelled",
+                        timer: 1000
+                    });
+                    refetch();
+                    handleReturnPayement(payment);
+                }
+            })
+    }
+
+    const handleApprove = (payment) => {
+        payment.status = "Confirmed";
+        axios
+            .patch(`/payments/${payment._id}/${payment.email}/Approved`, payment)
+            .then((data) => {
+                console.log(data.data)
+                if (data.data.modifiedCount) {
+                    Swal.fire({
+                        title: "Approved",
+                        timer: 1000,
+                    });
+                    refetch();
+                }
+            })
+            .catch(err => {
+                console.log(err)
+            })
     };
     return (
 
@@ -44,7 +84,10 @@ const ManageBookings = () => {
                     <tbody>
                         {
                             payments?.map(payment =>
-                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+
+                                payment.status != "Declined" &&
+
+                                <tr key={payment._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {payment.email}
                                     </th>
@@ -55,8 +98,8 @@ const ManageBookings = () => {
                                         {formatDate(payment.date)}
                                     </td>
                                     <td className="text-center py-4">
-                                        <button className='btn btn-link mx-1'>Approve</button>
-                                        <button className='btn btn-link mx-1'>Decline</button>
+                                        <button onClick={() => handleApprove(payment)} className='btn btn-link mx-1'>Approve</button>
+                                        <button onClick={() => handleDecline(payment)} className='btn btn-link mx-1'>Decline</button>
                                     </td>
                                 </tr>)
                         }

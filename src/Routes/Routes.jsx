@@ -61,7 +61,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/create-blog",
-        element: <CreateBlog />
+        element: <PrivateRoute><CreateBlog /></PrivateRoute>
       },
       {
         path: "/about-us",
@@ -76,31 +76,31 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "profile",
-        element: <UserProfile />
+        element: <PrivateRoute><UserProfile /></PrivateRoute>
       },
       {
         path: "post-bike",
-        element: <CreatePost />
+        element: <PrivateRoute><CreatePost /></PrivateRoute>
       },
       {
         path: "manage-posts",
-        element: <ManagePosts />
+        element: <PrivateRoute><ManagePosts /></PrivateRoute>
       },
       {
         path: "manage-bookings",
-        element: <ManageBookings />
+        element: <PrivateRoute><ManageBookings /></PrivateRoute>
       },
       {
         path: "payment",
-        element: <Payment />
+        element: <PrivateRoute><Payment /></PrivateRoute>
       },
       {
         path: "cart",
-        element: <Cart />
+        element: <PrivateRoute><Cart /></PrivateRoute>
       },
       {
         path: "payments-history",
-        element: <PaymentHistory />
+        element: <PrivateRoute><PaymentHistory /></PrivateRoute>
       }
     ]
   }
