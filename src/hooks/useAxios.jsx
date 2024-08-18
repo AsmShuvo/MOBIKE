@@ -1,7 +1,7 @@
 import axios from "axios";
-
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 const axios_ = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: `${SERVER_URL}`,
 });
 const useAxios = () => {
   return axios_;
