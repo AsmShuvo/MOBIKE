@@ -60,8 +60,8 @@ const Navbar = () => {
               <li>
               </li>
               <li>
-                <NavLink className="heading font-bold" to="/">
-                  CONTACT US
+                <NavLink className="heading font-bold" to="/blogs">
+                  BLOGS
                 </NavLink>
               </li>
             </ul>
@@ -106,9 +106,9 @@ const Navbar = () => {
             <li>
               <NavLink
                 className="heading text-xl text-gray-500 font-bold"
-                to="/contact"
+                to="/blogs"
               >
-                CONTACT US
+                BLOGS
               </NavLink>
             </li>
           </ul>

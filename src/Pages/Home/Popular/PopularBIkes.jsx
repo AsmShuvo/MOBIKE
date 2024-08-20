@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import useBikes from "../../../hooks/useBikes";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -12,11 +12,30 @@ import SectionHeading from "../../../Components/SectionHeading";
 import { Link } from "react-router-dom";
 
 const PopularBikes = () => {
-  const [bikes] = useBikes();
+  const [bikes, bikeRefetch] = useBikes();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading state
+    bikeRefetch().finally(() => setLoading(false));
+  }, [bikeRefetch]);
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen p-4 bg-black">
+        <div className="w-12 h-12 border-4 border-t-4 border-gray-200 border-t-blue-500 rounded-full animate-spin"></div>
+        <p className="mt-4 text-gray-500">Loading...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="p-4 bg-black">
-      <SectionHeading heading={"TAKING RIDES TO A NEWER LEVEL"} subHeading={"Exploring New Horizons in Mobility"} text="Discover the latest in urban mobility with our curated selection of popular bikes. From sleek designs to powerful performance, find your perfect ride and elevate your journey today." />
+      <SectionHeading
+        heading={"TAKING RIDES TO A NEWER LEVEL"}
+        subHeading={"Exploring New Horizons in Mobility"}
+        text="Discover the latest in urban mobility with our curated selection of popular bikes. From sleek designs to powerful performance, find your perfect ride and elevate your journey today."
+      />
       <Swiper
         spaceBetween={30}
         slidesPerView={3}
@@ -59,7 +78,9 @@ const PopularBikes = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <Link to="/bikes" className="texy-center flex items-center justify-center mt-5"><button className="btn w-36 bg-primary text-white heading font-bold rounded-none border-none outline-none mx-auto mt-4 mb-8 text-center">SEE MORE</button></Link>
+      <Link to="/bikes" className="text-center flex items-center justify-center mt-5">
+        <button className="btn w-36 bg-primary text-white heading font-bold rounded-none border-none outline-none mx-auto mt-4 mb-8 text-center">SEE MORE</button>
+      </Link>
     </div>
   );
 };

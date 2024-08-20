@@ -11,10 +11,15 @@ const Bikes = () => {
     const [bikes, bikeRefetch] = useBikes();
     const [currentPage, setCurrentPage] = useState(0);
     const bikesPerPage = 9;
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         document.title = "Mobikes | Motorcycles";
-    }, []);
+
+        // Simulate loading state
+        setLoading(true);
+        bikeRefetch().finally(() => setLoading(false));
+    }, [bikeRefetch]);
 
     const handlePageClick = (data) => {
         setCurrentPage(data.selected);
@@ -23,6 +28,15 @@ const Bikes = () => {
     const offset = currentPage * bikesPerPage;
     const currentBikes = bikes.slice(offset, offset + bikesPerPage);
     const pageCount = Math.ceil(bikes.length / bikesPerPage);
+
+    if (loading) {
+        return (
+            <div className="flex flex-col items-center justify-center h-screen">
+                <div className="w-12 h-12 border-4 border-t-4 border-gray-200 border-t-blue-500 rounded-full animate-spin"></div>
+                <p className="mt-4 text-gray-500">Loading...</p>
+            </div>
+        );
+    }
 
     return (
         <div className='bg-gray-100 pb-6'>
