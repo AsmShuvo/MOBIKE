@@ -11,7 +11,9 @@ export const useAdmin = () => {
     useEffect(() => {
         axios.get(`/users`).then((response) => {
             const users = response.data;
+            console.log(users)
             const curUser = users.find((u) => u.email === user?.email);
+            console.log("cur user: ", curUser);
             setIsAdmin(curUser?.role === "admin");
             setLoading(false);
         });

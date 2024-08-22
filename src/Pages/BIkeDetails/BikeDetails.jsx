@@ -9,26 +9,31 @@ import { AuthContext } from './../../Providers/AuthProviders';
 
 const BikeDetails = () => {
     const { id } = useParams();
-    const { user } = useContext(AuthContext)
+    const { user } = useContext(AuthContext);
     const axios = useAxios();
+
     const { data: bikeDetails, refetch: bikeDetailsRefetch } = useQuery({
-        queryKey: ["bikeDetailsQuery"],
+        queryKey: ["bikeDetailsQuery", id], // Make sure to include id as part of the queryKey
         queryFn: async () => {
-            const res = await axios.get(`/bike-details/${id}`);
+            const res = await axios.get(`/bikes/${id}`);
             return res.data;
         }
-    })
+    });
 
-    if (!bikeDetails || bikeDetails.length === 0) return <div>Loading...</div>;
-
-    const bike = bikeDetails[0];
-    const { model, brand, rent, mileage, owner_name, love, views, image, status } = bike;
-
+    // Initialize state outside of any conditional logic
     const [alreadyBooked, setAlreadyBooke] = useState(false);
+
+    // Loading state or fallback
+    if (!bikeDetails) {
+        return <div>Loading...</div>;
+    }
+
+    const { model, brand, rent, mileage, owner_name, love, views, image, status } = bikeDetails;
+
     const handleAddToCart = () => {
-        if (status == "booked") { return; }
+        if (status === "booked") { return; }
         if (alreadyBooked) {
-            Swal.fire("This item is already added to wishlsit by you");
+            Swal.fire("This item is already added to wishlist by you");
             return;
         }
 
@@ -43,16 +48,15 @@ const BikeDetails = () => {
             image,
             status,
             email: user?.email,
-        }
+        };
 
         axios.post("/cart", newBike)
             .then(data => {
-                if (data.data.insertedId) {
-                    Swal.fire("Added to wishlist");
-                    setAlreadyBooke(true);
-                }
-            })
-    }
+                console.log("added to cart: ", data);
+                Swal.fire("Added to wishlist");
+                setAlreadyBooke(true);
+            });
+    };
 
     return (
         <div className="relative flex flex-col-reverse py-16 lg:pt-0 lg:flex-col lg:pb-0 bg-gray-100">
@@ -82,7 +86,7 @@ const BikeDetails = () => {
                     <p className="text-lg font-semibold text-gray-800 mb-4 poppins">BDT {rent}/day</p>
                     <p className="text-gray-700 mb-4 poppins font-semibold">Mileage: {mileage} km</p>
                     <div className="flex items-center gap-4 mb-4">
-                        <p className="text-gray-700  border rounded-md px-2 py-1 flex items-center">
+                        <p className="text-gray-700 border rounded-md px-2 py-1 flex items-center">
                             <svg className="w-6 h-6 text-red-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M3.172 3.172a4.001 4.001 0 000 5.656L10 15.656l6.828-6.828a4.001 4.001 0 10-5.656-5.656L10 4.343l-1.172-1.17a4.001 4.001 0 00-5.656 0z"></path>
                             </svg>
@@ -93,9 +97,11 @@ const BikeDetails = () => {
                             {views}
                         </p>
                     </div>
-                    <p className=" mb-8 flex gap-1 items-center font-semibold uppercase poppins text-gray-500"> <PiPersonSimpleWalk /> Owner: {owner_name}</p>
+                    <p className="mb-8 flex gap-1 items-center font-semibold uppercase poppins text-gray-500">
+                        <PiPersonSimpleWalk /> Owner: {owner_name}
+                    </p>
                     <button onClick={handleAddToCart} className="px-4 uppercase plain tracking-wider py-2 bg-blue-600 text-white shadow-md hover:bg-blue-700 focus:shadow-outline focus:outline-none">
-                        {status == "booker" ? "BOOKED" : "ADD TO WISHLIST"}
+                        {status === "booker" ? "BOOKED" : "ADD TO WISHLIST"}
                     </button>
                 </div>
             </div>

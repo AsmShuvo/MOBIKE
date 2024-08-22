@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import useAxios from '../../../../hooks/useAxios';
 import { AuthContext } from '../../../../Providers/AuthProviders';
 import { useQuery } from '@tanstack/react-query';
-import Payment from './../../../Payment/Payment';
 import Swal from 'sweetalert2';
 
 const ManageBookings = () => {
@@ -12,6 +11,7 @@ const ManageBookings = () => {
         queryKey: ["payments"],
         queryFn: async () => {
             const res = await axios.get(`/payments`);
+            console.log("all payments: ", res);
             return res.data;
         }
     });
@@ -45,7 +45,7 @@ const ManageBookings = () => {
         axios
             .patch(`/payments/${payment._id}/${payment.email}/Approved`, payment)
             .then((data) => {
-                console.log(data.data)
+                console.log(data.data);
                 if (data.data.modifiedCount) {
                     Swal.fire({
                         title: "Approved",
@@ -101,10 +101,18 @@ const ManageBookings = () => {
                                     <td className="px-6 py-4">
                                         {payment.status}
                                     </td>
-                                    <td className="text-center py-4">
-                                        <button onClick={() => handleApprove(payment)} className='btn btn-link mx-1'>Approve</button>
-                                        <button onClick={() => handleDecline(payment)} className='btn btn-link mx-1'>Decline</button>
-                                    </td>
+                                    {
+                                        payment?.status == "Approved" || "Declined" ?
+                                            <td className="text-center py-4">
+                                                <button className=''></button>
+                                                <button className=''></button>
+                                            </td>
+                                            :
+                                            <td className="text-center py-4">
+                                                <button onClick={() => handleApprove(payment)} className='btn btn-link mx-1'>Approve</button>
+                                                <button onClick={() => handleDecline(payment)} className='btn btn-link mx-1'>Decline</button>
+                                            </td>
+                                    }
                                 </tr>)
                         }
                     </tbody>

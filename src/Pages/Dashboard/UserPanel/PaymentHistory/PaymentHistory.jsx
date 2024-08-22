@@ -3,16 +3,20 @@ import useAxios from "../../../../hooks/useAxios";
 import { useContext } from "react";
 import { AuthContext } from "../../../../Providers/AuthProviders";
 import { Link } from "react-router-dom";
+import { useAdmin } from "../../../../hooks/useAdmin";
 
 const PaymentHistory = () => {
     const axios = useAxios();
     const { user } = useContext(AuthContext);
-
+    console.log(user?.email);
+    const { isAdmin } = useAdmin();
+    console.log(isAdmin);
     const { data: payments = [], refetch: refetchPayment } = useQuery({
         queryKey: ["myPayments"],
         queryFn: async () => {
             const res = await axios.get(`/payments/${user?.email}`);
             return res.data;
+
         }
     });
     const formatDate = (dateString) => {
@@ -20,7 +24,7 @@ const PaymentHistory = () => {
         return new Date(dateString).toLocaleDateString(undefined, options);
     };
 
-    console.log(payments);
+    console.log("payment history: ", payments);
 
     return (
         <div className="w-2/3 mx-auto">

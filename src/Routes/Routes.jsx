@@ -52,7 +52,7 @@ export const router = createBrowserRouter([
         element: <Register />
       },
       {
-        path: "/bike-details/:id",
+        path: "/bikes/:id",
         element: <PrivateRoute><BikeDetails /></PrivateRoute>
       },
       {

@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 
 const CheckoutForm = () => {
     const { user } = useContext(AuthContext)
+
     const [error, setError] = useState('');
     const [trx, setTrx] = useState('');
     const [clientSecret, setClientSecret] = useState('');
@@ -18,19 +19,21 @@ const CheckoutForm = () => {
     const { data: cart, refetch: cartRefetch } = useQuery({
         queryKey: ["cart_"],
         queryFn: async () => {
-            const res = await axios.get("/cart");
+            const res = await axios.get(`/cart/${user?.email}`);
             return res.data;
         }
     });
-    // console.log(cart);
+    console.log(cart);
     const price = cart?.reduce((total, item) => total + item.rent, 0)
-    // console.log(price);
+    console.log(price);
 
     useEffect(() => {
+        console.log("in use effect");
+        console.log(price)
         if (price > 0) {
             axios.post('/create-payment-intent', { price })
                 .then(res => {
-                    // console.log(res.data.clientSecret);
+                    console.log(res.data.clientSecret);
                     setClientSecret(res.data.clientSecret);
                 })
                 .catch(err => {
@@ -91,10 +94,7 @@ const CheckoutForm = () => {
             axios.post('/payments', payment)
                 .then(data => {
                     console.log(data.data?.paymentResult?.insertedIdcd);
-                    if (data.data?.paymentResult?.insertedId) {
-                        Swal.fire("Payment was successful. Wait for the confirmation");
-                        console.log("object")
-                    }
+                    Swal.fire("Payment was successful. Wait for the confirmation");
                 })
                 .catch(err => {
                     console.log(err)
@@ -103,6 +103,8 @@ const CheckoutForm = () => {
         }
 
     }
+    console.log("stripe: ", stripe);
+    console.log(" clientSecret: ", clientSecret)
     return (
         <div>
             <div>
@@ -125,7 +127,11 @@ const CheckoutForm = () => {
                         },
                     }}
                 />
+
+
+
                 <div className="flex justify-center items-center" >
+
                     <button type="submit" disabled={!stripe || !clientSecret} className="mx-auto bg-blue-700 hover:bg-success text-white font-semibold btn btn-sm"  >Pay</button>
                     <p className="text-red-600">{error}</p>
                     {trx && <p className="text-blue-600"> TRX ID {trx}</p>}

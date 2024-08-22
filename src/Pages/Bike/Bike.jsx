@@ -10,7 +10,7 @@ const Bike = ({ bike }) => {
 
 
     return (
-        <Link to={`/bike-details/${_id}`}>
+        <Link to={`/bikes/${_id}`}>
             <div className="min-h-screen flex justify-center items-center">
                 <div className="max-w-xs container bg-white shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
                     <div>
