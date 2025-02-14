@@ -50,4 +50,3 @@ Now write this command
     <li>Website backend is created with Express. Database used is MongoDB and Deployed in Firebase</li>
     <li>This is a responsive website</li>
 </ol>
-v
