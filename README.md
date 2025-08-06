@@ -36,7 +36,6 @@ Now write this command
    npm run dev
 ```
 
-## [Live Link](https://mo-bike-64cea.web.app/)
 
 ## Website Description
 
